@@ -21,6 +21,6 @@ Route::get('/', function () {
 //})->name('login_success');
 
 Route::post('login',[\App\Http\Controllers\AuthController::class,'checkLogin'])->name('login');
-Route::get('logout/{id}',[\App\Http\Controllers\AuthController::class, 'logout'])->name('logout');
+Route::get('logout',[\App\Http\Controllers\AuthController::class, 'logout'])->name('logout');
 Route::get('show-ip', [\App\Http\Controllers\AuthController::class, 'index'])->name('ip_address');
 Route::get('show-success', [\App\Http\Controllers\AuthController::class, 'showSuccess'])->name('login_success');
