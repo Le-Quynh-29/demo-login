@@ -17,7 +17,6 @@ class AuthController extends Controller
     {
         $user = Auth::guard()->user();
         $sessions = DB::table('sessions')->get();
-//        dd($sessions);
         return view('success', compact('user', 'sessions'));
     }
 
@@ -32,23 +31,16 @@ class AuthController extends Controller
             $request->session()->regenerate();
             $userId = Auth::guard()->user();
             $sessions = DB::table('sessions')->get()->toArray();
-//            dd($sessions);
             if ($sessions == null) {
-                $ip = new \App\Models\Session();
-                $ip->id = Str::random(10);
-                $ip->user_id = $userId->id;
-                $ip->ip_address = geoip()->getClientIP();
-                $ip->save();
+                return redirect()->route('login_success');
             } else {
                 foreach ($sessions as $val) {
                     if ($val->user_id !== $userId->id) {
-                        $ip = new \App\Models\Session();
-                        $ip->id = Str::random(10);
-                        $ip->user_id = $userId->id;
-                        $ip->ip_address = geoip()->getClientIP();
-                        $ip->save();
-
+                        return redirect()->route('login_success');
                     } else {
+//                        Auth::logoutOtherDevices($request->password);
+//                        Session::flash('error', 'Bạn đang đăng nhập tại một địa chỉ khác');
+//                        return redirect()->route('show_login');
                         dd('bạn đang đăng nhập tại một địa chỉ khác');
                     }
                 }
@@ -62,10 +54,6 @@ class AuthController extends Controller
 
     public function logout(Request $request)
     {
-
-        $user = Auth::guard()->user();
-        $session = \App\Models\Session::where('user_id',$user->id)->first();
-        $session->delete();
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
