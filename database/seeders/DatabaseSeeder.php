@@ -15,16 +15,23 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        $this->call([
+            GroupSeeder::class
+        ]);
+
         DB::table('users')->insert(
             [
-            'name' => 'Quỳnh Lee',
-            'email' => 'lequynh2904@gmail.com',
+            'username' => 'Quỳnh Lee',
+            'gender' => 'nữ',
+            'role' => 'admin',
             'password' => Hash::make('quynh2904')
             ]);
         DB::table('users')->insert(
             [
-                'name' => 'Tuấn Lê',
-                'email' => 'letuan@gmail.com',
+                'username' => 'Tuấn Lê',
+                'gender' => 'nam',
+                'role' => 'user',
+                'group_id' => 1,
                 'password' => Hash::make('12345678')
             ]);
     }

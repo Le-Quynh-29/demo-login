@@ -24,3 +24,6 @@ Route::post('',[\App\Http\Controllers\AuthController::class,'checkLogin'])->name
 Route::get('logout',[\App\Http\Controllers\AuthController::class, 'logout'])->name('logout');
 Route::get('show-ip', [\App\Http\Controllers\AuthController::class, 'index'])->name('ip_address');
 Route::get('show-success', [\App\Http\Controllers\AuthController::class, 'showSuccess'])->name('login_success');
+
+Route::get('admin', [\App\Http\Controllers\GroupController::class, 'index'])->name('admin');
+Route::get('group/{id}', [\App\Http\Controllers\GroupController::class, 'create'])->name('group');

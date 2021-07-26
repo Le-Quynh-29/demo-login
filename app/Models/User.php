@@ -18,9 +18,17 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
-        'email',
+        'fullname',
+        'gender',
+        'role',
+        'active',
+        'group_ic',
         'password',
     ];
+
+    public function group() {
+        return $this->hasMany(Group::class,'group_id', 'id');
+    }
 
     /**
      * The attributes that should be hidden for arrays.
