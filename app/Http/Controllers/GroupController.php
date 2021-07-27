@@ -22,10 +22,9 @@ class GroupController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($id)
+    public function create()
     {
-        $group = Group::find($id);
-        return view('group', compact('group'));
+        return view('group');
     }
 
     /**

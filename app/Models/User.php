@@ -26,6 +26,8 @@ class User extends Authenticatable
         'password',
     ];
 
+    public const ROLE_ADMIN = 'admin', ROLE_QL = 'QL', ROLE_TP = 'TP', ROLE_USER = 'user';
+
     public function group() {
         return $this->hasMany(Group::class,'group_id', 'id');
     }

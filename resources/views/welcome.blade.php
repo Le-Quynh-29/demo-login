@@ -24,7 +24,7 @@
         <form action="{{route('login')}}" method="post">
             @csrf
             <input type="text" id="login" class="fadeIn second" name="username" placeholder="Your username">
-            <input type="text" id="password" class="fadeIn third" name="password" placeholder="Your password">
+            <input type="password" id="password" class="fadeIn third" name="password" placeholder="Your password">
             <input type="submit" class="fadeIn fourth" value="Log In">
         </form>
 

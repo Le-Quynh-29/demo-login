@@ -18,21 +18,9 @@ class DatabaseSeeder extends Seeder
         $this->call([
             GroupSeeder::class
         ]);
+        $this->call([
+            UserSeeder::class
+        ]);
 
-        DB::table('users')->insert(
-            [
-            'username' => 'Quỳnh Lee',
-            'gender' => 'nữ',
-            'role' => 'admin',
-            'password' => Hash::make('quynh2904')
-            ]);
-        DB::table('users')->insert(
-            [
-                'username' => 'Tuấn Lê',
-                'gender' => 'nam',
-                'role' => 'user',
-                'group_id' => 1,
-                'password' => Hash::make('12345678')
-            ]);
     }
 }
